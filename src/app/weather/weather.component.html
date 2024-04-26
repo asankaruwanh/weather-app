@@ -1,0 +1,12 @@
+<div class="weather-container">
+  <mat-tab-group (selectedTabChange)="onCityChange(cities[$event.index])">
+    <mat-tab *ngFor="let city of cities" [label]="city"></mat-tab>
+  </mat-tab-group>
+
+  <div *ngIf="weatherData">
+    <h2>{{ selectedCity }}</h2>
+    <p>Temperature: {{ weatherData.main.temp }}°C</p>
+    <p>Humidity: {{ weatherData.main.humidity }}%</p>
+    <!-- Add more weather details as needed -->
+  </div>
+</div>
