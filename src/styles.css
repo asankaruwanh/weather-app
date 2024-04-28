@@ -2,3 +2,44 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --mat-tab-header-inactive-label-text-color: initial;
+}
+.mat-tab-group {
+  background-color: #ffffff;
+  border: 1px solid #18d25f;
+  color: #000;
+  max-width: 20%;
+  width: 100%; /* Add this to make it responsive */
+  box-sizing: border-box; /* Add this to include padding and border in the element's total width */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) { /* For tablets and smaller devices */
+  .mat-tab-group {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 480px) { /* For mobile phones */
+  .mat-tab-group {
+    max-width: 100%;
+  }
+}
+
+.mat-tab-label {
+  color: #333;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.mat-tab-label-active {
+  color: #000;
+  background-color: #8f2222;
+}
+
+.mat-tab-label:not(.mat-tab-label-active) .mdc-tab__content .mdc-tab__text-label {
+  color: #333 !important; /* Change this to your desired color for inactive tabs */
+}
+

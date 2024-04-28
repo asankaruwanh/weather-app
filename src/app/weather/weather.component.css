@@ -4,4 +4,87 @@
 
 mat-tab-group {
   margin-bottom: 20px;
+  mat-tab-header-inactive-label-text-color: initial;
+}
+
+.weather-forecast {
+  max-width: 23%;
+  margin: auto;
+  margin-top: 2%;
+  align-items: center;
+  background-color: white;
+  border-radius: 3px;
+  @media (max-width: 768px) { /* For tablets and smaller devices */
+    max-width: 50%;
+  }
+  @media (max-width: 480px) { /* For mobile phones */
+    max-width: 75%;
+  }
+}
+
+.weather-card {
+
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+.weather-card > div {
+  flex: 0 0 auto; /* Prevents flex items from growing or shrinking */
+}
+
+.time, .temperature {
+  margin: 0 5px;
+}
+
+.icon {
+  width: 50px;
+  height: auto;
+}
+
+:host {
+  --mat-tab-header-inactive-label-text-color: initial;
+}
+.mat-tab-label {
+  color: red; /* Set your desired color */
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  color: red; /* Set your desired color for active tab */
+}
+
+.h2-padding
+{
+padding-left: 1em;
+padding-top: 1em;
+}
+
+.header {
+  background: transparent; /* Blue background */
+  color: white; /* White text */
+  padding-bottom: 1em; padding-right: 1em;
+  justify-content: space-between; /* Space between title and icon */
+}
+
+.title {
+  font-size: large; /* Larger font for the title */
+}
+
+.search-icon {
+  font-size: large; /* Larger font for the search icon */
+  padding-left: 2%;
+}
+.weather-forecast-search {
+  max-width: 23%;
+  margin: auto;
+  margin-top: 2%;
+  align-items: center;
+  border-radius: 3px;
+  @media (max-width: 768px) { /* For tablets and smaller devices */
+    max-width: 50%;
+  }
+  @media (max-width: 480px) { /* For mobile phones */
+    max-width: 75%;
+  }
 }
