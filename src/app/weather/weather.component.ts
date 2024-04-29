@@ -16,6 +16,7 @@ export class WeatherComponent implements OnInit {
   weatherData?: WeatherData;
   hourlyWeather: any[] = [];
   forecast!: WeatherResponse;
+  lastUpdated: Date = new Date();
 
   @ViewChild('searchInput') searchInputElement!: ElementRef;
 
@@ -26,10 +27,12 @@ export class WeatherComponent implements OnInit {
     this.selectedCity = this.cities[0];
     this.getWeatherData(this.selectedCity);
     this.searchCity(this.selectedCity);
+    this.updateLastUpdatedLabel(); // Update the last updated label initially
 
   // Call getWeatherData every 5 minutes to update/ refresh the data in UI
   interval(5 * 60 * 1000).subscribe(() => {
     this.getWeatherData(this.selectedCity);
+    this.updateLastUpdatedLabel();
   });
 
   }
@@ -81,5 +84,7 @@ export class WeatherComponent implements OnInit {
     this.searchInputElement.nativeElement.value = '';
     this.cdr.detectChanges();
   }
-
+  updateLastUpdatedLabel() {
+    this.lastUpdated = new Date(); // Update the last updated timestamp
+  }
 }

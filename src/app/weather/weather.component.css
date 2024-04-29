@@ -108,3 +108,25 @@ padding-top: 1em;
     max-width: 75%;
   }
 }
+
+.last-updated
+{
+  border-radius: 3px;
+  margin: auto;
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  max-width: 23%; /* Ensure it doesn't exceed the container's width */
+  background-color: blue;
+  text-align: center;
+@media (max-width: 768px) { /* For tablets and smaller devices */
+  max-width: 50%;
+}
+@media (max-width: 480px) { /* For mobile phones */
+  max-width: 75%;
+}
+}
+.last-updated label {
+  color: white;
+}
+
