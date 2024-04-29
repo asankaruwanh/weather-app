@@ -1,25 +1,22 @@
 <div class="weather-container">
   <div class="weather-forecast-search">
     <div class="header">
-      <input class="title" style="width: 88%;font-style: italic;" value="Simple Weather. (Type here..)" type="text" #searchInput (keypress)="handleKeyPress($event)"/>
+      <input class="title" id="searchInput" style="width: 85%;" placeholder="Simple Weather. (Type here..)" type="text" (click)="clearInput()" #searchInput (keypress)="handleKeyPress($event)"/>
       <span class="search-icon" (click)="onSearchClick(searchInput.value)">🔍</span>
     </div>
   </div>
 
-
+<div class="weather-forecast-tab">
   <mat-tab-group class="mat-tab-group" (selectedTabChange)="onCityChange(cities[$event.index])">
     <mat-tab ngClass="mat-tab-label" *ngFor="let city of cities" [label]="city" labelClass></mat-tab>
   </mat-tab-group>
+</div>
 
-
-<div class="weather-forecast">
+<div class="weather-forecast" style="margin-top:1px;">
   <h2 class="h2-padding">Next hours</h2>
 
 <table style="padding-bottom: 5px;padding-left: 1em;">
   <tr>
-
-
-
       <td class="weather-card" *ngFor="let weather of hourlyWeather | slice:0:5">
         <span class="temperature">{{ weather.temp | number: '1.0-0' }}°C</span>
         <br/>
@@ -28,7 +25,6 @@
         <img class="icon" src="https://openweathermap.org/img/wn/{{ weather.weather[0].icon }}.png">
         <br/>
         <span class="time">{{ weather.dt | date: 'shortTime' }}</span>
-
   </td>
 </tr>
 </table>
@@ -51,6 +47,5 @@
             </td>
           </tr>
         </table>
-
         </div>
 </div>

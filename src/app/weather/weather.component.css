@@ -88,3 +88,23 @@ padding-top: 1em;
     max-width: 75%;
   }
 }
+.title::placeholder {
+  color: gray;
+  font-style: italic;
+}
+
+.weather-forecast-tab {
+  max-width: 23%;
+  margin: auto;
+  margin-top: 2%;
+  align-items: center;
+  background-color: white;
+  border-radius: 3px;
+  max-width: 23%;
+  @media (max-width: 768px) { /* For tablets and smaller devices */
+    max-width: 70%;
+  }
+  @media (max-width: 480px) { /* For mobile phones */
+    max-width: 75%;
+  }
+}

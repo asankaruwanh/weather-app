@@ -1,6 +1,7 @@
-import { Component, OnInit,ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation, ViewChild, ElementRef, ChangeDetectorRef  } from '@angular/core';
 import { WeatherService,WeatherResponse, WeatherData } from '../weather.service';
 import { MatTabsModule } from '@angular/material/tabs';
+import { interval } from 'rxjs';
 
 
 @Component({
@@ -18,12 +19,19 @@ export class WeatherComponent implements OnInit {
 
   @ViewChild('searchInput') searchInputElement!: ElementRef;
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService, private cdr: ChangeDetectorRef) {} // Inject ChangeDetectorRef
+
 
   ngOnInit() {
     this.selectedCity = this.cities[0];
     this.getWeatherData(this.selectedCity);
     this.searchCity(this.selectedCity);
+
+  // Call getWeatherData every 5 minutes to update/ refresh the data in UI
+  interval(5 * 60 * 1000).subscribe(() => {
+    this.getWeatherData(this.selectedCity);
+  });
+
   }
   isWeatherArray(forcst: any): boolean {
     return 'weather' in forcst && Array.isArray(forcst.weather);
@@ -68,6 +76,10 @@ export class WeatherComponent implements OnInit {
     if (event.key === 'Enter') {
       this.onSearchClick(this.searchInputElement.nativeElement.value);
     }
+  }
+  clearInput() {
+    this.searchInputElement.nativeElement.value = '';
+    this.cdr.detectChanges();
   }
 
 }
